@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://djmyl4vgtm6o7"]
+
+[ext_resource type="Texture2D" uid="uid://c64qrfhib24gl" path="res://graphics/briefcase.png" id="1_etemj"]
+[ext_resource type="Script" path="res://DemoItem.cs" id="2_j4umk"]
+[ext_resource type="Texture2D" uid="uid://cfpumte24jhyr" path="res://graphics/axe.png" id="4_0m2l4"]
+[ext_resource type="Texture2D" uid="uid://dxgm7qga5n0yv" path="res://graphics/wrench.png" id="5_wif6c"]
+[ext_resource type="Texture2D" uid="uid://c7h6xhlfhb7bl" path="res://graphics/money.png" id="6_mh8c3"]
+[ext_resource type="Texture2D" uid="uid://cwksij2hh2sa3" path="res://graphics/potion.png" id="6_sp7pj"]
+[ext_resource type="PackedScene" uid="uid://bvt4413tg118r" path="res://ItemWithShadow.tscn" id="7_1cefo"]
+[ext_resource type="Texture2D" uid="uid://2g2geq7exw4e" path="res://graphics/saw.png" id="8_tw6x3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpaec"]
+radius = 87.0057
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Briefcase" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(3, -3)
+scale = Vector2(2, 2)
+texture = ExtResource("1_etemj")
+
+[node name="Shadow" type="Sprite2D" parent="Briefcase"]
+modulate = Color(0.227451, 0.227451, 0.227451, 0.27451)
+z_index = -1
+position = Vector2(0, 32.5)
+scale = Vector2(1, 0.409091)
+texture = ExtResource("1_etemj")
+
+[node name="Book" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(-307, -206)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Book" instance=ExtResource("7_1cefo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Book"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[node name="Axe" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(-457, 4)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Axe" instance=ExtResource("7_1cefo")]
+position = Vector2(0, -2)
+
+[node name="Item" parent="Axe/ItemWithShadow" index="0"]
+texture = ExtResource("4_0m2l4")
+
+[node name="Sprite2D" parent="Axe/ItemWithShadow/ShadowCenter" index="0"]
+texture = ExtResource("4_0m2l4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[node name="Wrench" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(-305, 212)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Wrench" instance=ExtResource("7_1cefo")]
+
+[node name="Item" parent="Wrench/ItemWithShadow" index="0"]
+texture = ExtResource("5_wif6c")
+
+[node name="Sprite2D" parent="Wrench/ItemWithShadow/ShadowCenter" index="0"]
+texture = ExtResource("5_wif6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrench"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[node name="Money" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(303, -206)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Money" instance=ExtResource("7_1cefo")]
+
+[node name="Item" parent="Money/ItemWithShadow" index="0"]
+texture = ExtResource("6_mh8c3")
+
+[node name="Sprite2D" parent="Money/ItemWithShadow/ShadowCenter" index="0"]
+texture = ExtResource("6_mh8c3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Money"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[node name="Potion" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(453, 4)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Potion" instance=ExtResource("7_1cefo")]
+
+[node name="Item" parent="Potion/ItemWithShadow" index="0"]
+texture = ExtResource("6_sp7pj")
+
+[node name="Sprite2D" parent="Potion/ItemWithShadow/ShadowCenter" index="0"]
+texture = ExtResource("6_sp7pj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Potion"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[node name="Saw" type="Area2D" parent="." node_paths=PackedStringArray("target", "hideWhileThrowing")]
+position = Vector2(301, 212)
+script = ExtResource("2_j4umk")
+target = NodePath("../Briefcase")
+itemWithShadowScene = ExtResource("7_1cefo")
+hideWhileThrowing = NodePath("ItemWithShadow")
+
+[node name="ItemWithShadow" parent="Saw" instance=ExtResource("7_1cefo")]
+
+[node name="Item" parent="Saw/ItemWithShadow" index="0"]
+texture = ExtResource("8_tw6x3")
+
+[node name="Sprite2D" parent="Saw/ItemWithShadow/ShadowCenter" index="0"]
+texture = ExtResource("8_tw6x3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saw"]
+shape = SubResource("CircleShape2D_kpaec")
+
+[editable path="Book/ItemWithShadow"]
+[editable path="Axe/ItemWithShadow"]
+[editable path="Wrench/ItemWithShadow"]
+[editable path="Money/ItemWithShadow"]
+[editable path="Potion/ItemWithShadow"]
+[editable path="Saw/ItemWithShadow"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvt4413tg118r"]
+
+[ext_resource type="Script" path="res://ItemWithShadow.cs" id="1_h8vj3"]
+[ext_resource type="Texture2D" uid="uid://mfvarc8ynlr8" path="res://graphics/book.png" id="2_rrirb"]
+
+[node name="ItemWithShadow" type="Node2D" node_paths=PackedStringArray("itemSprite", "shadowSprite")]
+script = ExtResource("1_h8vj3")
+itemSprite = NodePath("Item")
+shadowSprite = NodePath("ShadowCenter/Sprite2D")
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("2_rrirb")
+
+[node name="ShadowCenter" type="Node2D" parent="."]
+position = Vector2(0, 41.245)
+scale = Vector2(1, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShadowCenter"]
+modulate = Color(0.317647, 0, 0.0705882, 0.290196)
+z_index = -1
+texture = ExtResource("2_rrirb")
