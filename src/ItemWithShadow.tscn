@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvt4413tg118r"]
 
-[ext_resource type="Script" path="res://ItemWithShadow.cs" id="1_h8vj3"]
+[ext_resource type="Script" path="res://addons/ItemToss/ItemWithShadow.cs" id="1_5a4h6"]
 [ext_resource type="Texture2D" uid="uid://mfvarc8ynlr8" path="res://graphics/book.png" id="2_rrirb"]
 
 [node name="ItemWithShadow" type="Node2D" node_paths=PackedStringArray("itemSprite", "shadowSprite")]
-script = ExtResource("1_h8vj3")
+script = ExtResource("1_5a4h6")
 itemSprite = NodePath("Item")
 shadowSprite = NodePath("ShadowCenter/Sprite2D")
 
