@@ -44,6 +44,18 @@ public partial class TossItem : Node2D
         parent.AddChild(tossItem);
     }
 
+    public static void InstantiateAndTossPackedScene(
+        PackedScene packedScene,
+        Node2D parent,
+        Node2D from,
+        Node2D target,
+        Action<Node2D> onFinish
+    )
+    {
+        ItemWithShadow item = packedScene.Instantiate<ItemWithShadow>();
+        Toss(item, parent, from, target, onFinish);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         // Track progress inside physics so completion time isn't framerate dependent.
